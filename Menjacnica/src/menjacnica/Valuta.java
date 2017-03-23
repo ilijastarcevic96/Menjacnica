@@ -84,7 +84,12 @@ public class Valuta {
 	}
 	
 	public void setNaziv(String naziv) {
-		this.naziv = naziv;
+		if(naziv != null){
+			this.naziv = naziv;
+		}
+		else{
+			throw new RuntimeException("Morate uneti naziv valute.");
+		}
 	}
 	
 	public String getSkraceniNaziv() {
@@ -92,7 +97,12 @@ public class Valuta {
 	}
 	
 	public void setSkraceniNaziv(String skraceniNaziv) {
-		this.skraceniNaziv = skraceniNaziv;
+		if (skraceniNaziv != null && skraceniNaziv.length() >=2 && skraceniNaziv.length() <=4) {
+			this.skraceniNaziv = skraceniNaziv;
+		}
+		else{
+			throw new RuntimeException("Uneli ste pogresnu vrednost za  skraceni naziv valute");
+		}
 	}
 	
 	public GregorianCalendar getDatum() {
@@ -100,7 +110,12 @@ public class Valuta {
 	}
 	
 	public void setDatum(GregorianCalendar datum) {
-		this.datum = datum;
+		if(datum != null){
+			this.datum = datum;
+		}
+		else{
+			throw new RuntimeException("Morate uneti datum valute.");
+		}
 	}
 	
 	public double getProdajniKurs() {
@@ -108,7 +123,12 @@ public class Valuta {
 	}
 	
 	public void setProdajniKurs(double prodajniKurs) {
-		this.prodajniKurs = prodajniKurs;
+		if(prodajniKurs != 0){
+			this.prodajniKurs = prodajniKurs;
+		}
+		else{
+			throw new RuntimeException("Kurs ne sme biti nula.");
+		}
 	}
 	
 	public double getKupovniKurs() {
@@ -116,7 +136,12 @@ public class Valuta {
 	}
 	
 	public void setKupovniKurs(double kupovniKurs) {
-		this.kupovniKurs = kupovniKurs;
+		if(kupovniKurs != 0){
+			this.kupovniKurs = kupovniKurs;
+		}
+		else{
+			throw new RuntimeException("Kurs ne sme biti nula.");
+		}
 	}
 	
 	public double getSrednjiKurs() {
@@ -124,6 +149,11 @@ public class Valuta {
 	}
 	
 	public void setSrednjiKurs(double srednjiKurs) {
-		this.srednjiKurs = srednjiKurs;
+		if(srednjiKurs != 0){
+			this.srednjiKurs = srednjiKurs;
+		}
+		else{
+			throw new RuntimeException("Kurs ne sme biti nula.");
+		}
 	}
 }
