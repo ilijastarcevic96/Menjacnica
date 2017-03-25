@@ -11,6 +11,21 @@ public class Valuta {
 	private double kupovniKurs;
 	private double srednjiKurs;
 	
+	public Valuta() {
+		super();
+	}
+
+	public Valuta(String naziv, String skraceniNaziv, GregorianCalendar datum, double prodajniKurs, double kupovniKurs,
+			double srednjiKurs) {
+		super();
+		this.naziv = naziv;
+		this.skraceniNaziv = skraceniNaziv;
+		this.datum = datum;
+		this.prodajniKurs = prodajniKurs;
+		this.kupovniKurs = kupovniKurs;
+		this.srednjiKurs = srednjiKurs;
+	}
+
 	@Override
 	public String toString() {
 		return "Naziv valute: "+naziv+"\nSkraceni naziv: "+skraceniNaziv+"\nDatum: "+datum.getTime()+"\nProdajni kurs: "+prodajniKurs+
