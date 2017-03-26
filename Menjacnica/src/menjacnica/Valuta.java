@@ -2,6 +2,8 @@ package menjacnica;
 
 import java.util.GregorianCalendar;
 
+import utility.Utility;
+
 public class Valuta {
 
 	private String naziv;
@@ -32,20 +34,15 @@ public class Valuta {
 				"\nKupovni kurs: "+kupovniKurs+"\nSrednji kurs: "+srednjiKurs;
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((datum == null) ? 0 : datum.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(kupovniKurs);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((naziv == null) ? 0 : naziv.hashCode());
-		temp = Double.doubleToLongBits(prodajniKurs);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((skraceniNaziv == null) ? 0 : skraceniNaziv.hashCode());
-		temp = Double.doubleToLongBits(srednjiKurs);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 
@@ -65,10 +62,7 @@ public class Valuta {
 			if (other.datum != null) {
 				return false;
 			}
-		} else if (!datum.equals(other.datum)) {
-			return false;
-		}
-		if (Double.doubleToLongBits(kupovniKurs) != Double.doubleToLongBits(other.kupovniKurs)) {
+		} else if (!Utility.jeIstiDan(datum, other.getDatum())) {
 			return false;
 		}
 		if (naziv == null) {
@@ -78,17 +72,11 @@ public class Valuta {
 		} else if (!naziv.equals(other.naziv)) {
 			return false;
 		}
-		if (Double.doubleToLongBits(prodajniKurs) != Double.doubleToLongBits(other.prodajniKurs)) {
-			return false;
-		}
 		if (skraceniNaziv == null) {
 			if (other.skraceniNaziv != null) {
 				return false;
 			}
 		} else if (!skraceniNaziv.equals(other.skraceniNaziv)) {
-			return false;
-		}
-		if (Double.doubleToLongBits(srednjiKurs) != Double.doubleToLongBits(other.srednjiKurs)) {
 			return false;
 		}
 		return true;
@@ -171,4 +159,6 @@ public class Valuta {
 			throw new RuntimeException("Kurs ne sme biti nula.");
 		}
 	}
+
+	
 }
